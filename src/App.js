@@ -4,9 +4,25 @@ import axios from 'axios';
 import { BASE_URL, API_KEY } from './constants/index';
 import Title from './constants/Title';
 import Explanation from './constants/Explanation';
-import Image from './constants/Image';
 import Copyright from './constants/Copyright';
 import Date from './constants/Date';
+import styled from 'styled-components';
+import {
+	Card, CardImg, CardBody,
+	CardTitle, Row, Col
+} from 'reactstrap';
+
+const StyledApp = styled.div`
+display: flex;
+justify-content: center;
+text-align: center;
+width: 100vw;
+`
+
+
+
+
+
 export default function App() {
 	const [title, setTitle] = useState(null);
 	const [url, setImage] = useState(null);
@@ -27,19 +43,21 @@ export default function App() {
 	}, [])
 
 	return (
-		<div className="App">
-			<Title title={title} />
-			<div className="image">
-				<Image url={url} />
-			</div>
-			<div className="explanation">
-				<Explanation explanation={explanation} />
-			</div>
-			<div className="copyright date">
-				<Copyright copyright={copyright} />
-				<Date date={date} />
-			</div>
-		</div>
+		<StyledApp>
+			<Row>
+				<Col sm="6">
+					<Card>
+						<CardImg className="card-img" top width="100%" src={url} alt="Card image cap" />
+						<CardBody>
+							<CardTitle tag="h5"><Title title={title} /></CardTitle>
+							<Explanation explanation={explanation} />
+							<Copyright copyright={copyright} />
+							<Date date={date} />
+						</CardBody>
+					</Card>
+				</Col>
+			</Row>
+		</StyledApp>
 	);
 }
 

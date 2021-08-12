@@ -40,3 +40,14 @@
 .explanation {
 	font-size: 0.5rem;
 }
+
+
+.card-img {
+	width: 200px !important;
+}
+
+body {
+	width: 100vw;
+	margin-left: auto;
+	margin-right: auto;
+}
